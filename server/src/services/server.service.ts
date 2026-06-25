@@ -49,6 +49,7 @@ export class ServerService extends BaseService {
       version,
       versionUrl: `https://github.com/immich-app/immich/releases/tag/${version}`,
       licensed: !!licensed,
+      uptime: Math.floor(process.uptime()),
       ...buildMetadata,
       ...buildVersions,
     };

@@ -29,6 +29,7 @@ const ServerAboutResponseSchema = z
     libvips: z.string().optional().describe('libvips version'),
     exiftool: z.string().optional().describe('ExifTool version'),
     licensed: z.boolean().describe('Whether the server is licensed'),
+    uptime: z.number().describe('Server process uptime in seconds since the server started'),
     thirdPartySourceUrl: z.string().optional().describe('Third-party source URL'),
     thirdPartyBugFeatureUrl: z.string().optional().describe('Third-party bug/feature URL'),
     thirdPartyDocumentationUrl: z.string().optional().describe('Third-party documentation URL'),

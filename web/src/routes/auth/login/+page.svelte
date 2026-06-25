@@ -183,5 +183,9 @@
     {#if !featureFlagsManager.value.passwordLogin && !featureFlagsManager.value.oauth}
       <Alert color="warning" title={$t('login_has_been_disabled')} />
     {/if}
+
+    <p data-testid="demo-instance-note" class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">
+      Skyramp Testbot demo instance
+    </p>
   </Stack>
 </AuthPageLayout>
