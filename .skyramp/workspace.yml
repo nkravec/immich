@@ -1,0 +1,35 @@
+# Skyramp Workspace Configuration
+workspace:
+  repoName: nkravec/immich
+  repoUrl: https://github.com/nkravec/immich
+metadata:
+  schemaVersion: v1
+  executorVersion: v1.3.29
+  createdAt: "2026-06-25T20:58:49.319Z"
+  updatedAt: "2026-06-25T20:58:49.327Z"
+services:
+  - serviceName: immich-server-backend
+    language: typescript
+    framework: playwright
+    testDirectory: e2e/src/specs/server
+    api:
+      schemaPath: open-api/immich-openapi-specs.json
+      authType: bearer
+      authHeader: Authorization
+      baseUrl: http://localhost:2285
+    runtimeDetails:
+      serverStartCommand: docker compose -f deployment-testbot/docker-compose.yml up -d immich-server
+      runtime: docker
+      dockerNetwork: immich-testbot_default
+  - serviceName: immich-web-frontend
+    language: typescript
+    framework: playwright
+    testDirectory: e2e/src/specs/web
+    api:
+      authType: none
+      authHeader: ""
+      baseUrl: http://localhost:2285
+    runtimeDetails:
+      serverStartCommand: docker compose -f deployment-testbot/docker-compose.yml up -d immich-server
+      runtime: docker
+      dockerNetwork: immich-testbot_default
