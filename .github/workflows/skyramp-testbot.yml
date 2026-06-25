@@ -42,3 +42,12 @@ jobs:
           githubToken: ${{ steps.skyramp-testbot-app-token.outputs.token }}
           uiCredentials: ${{ secrets.SKYRAMP_UI_CREDENTIALS }}
           skyrampMcpVersion: 0.2.150-rc.ui.mntnc
+
+          # Builds Immich from the PR source and boots it on :2285. The script
+          # emits {"baseUrl":"http://localhost:2285"} as its last stdout line so
+          # the testbot's built-in ready check targets the right URL (no explicit
+          # targetReadyCheckCommand — relying on the built-in auto-check).
+          targetSetupCommand: './deployment-testbot/setup.sh'
+          targetReadyCheckTimeout: '600'
+          # Seeds the admin (admin@immich.test) and returns an access token.
+          authTokenCommand: './deployment-testbot/get-token.sh'
