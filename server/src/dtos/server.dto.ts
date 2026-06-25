@@ -108,6 +108,7 @@ const ServerMediaTypesResponseSchema = z
     video: z.array(z.string()).describe('Supported video MIME types'),
     image: z.array(z.string()).describe('Supported image MIME types'),
     sidecar: z.array(z.string()).describe('Supported sidecar MIME types'),
+    count: z.int().describe('Total number of supported media types across all categories'),
   })
   .meta({ id: 'ServerMediaTypesResponseDto' });
 
