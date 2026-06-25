@@ -166,10 +166,14 @@ export class ServerService extends BaseService {
   }
 
   getSupportedMediaTypes(): ServerMediaTypesResponseDto {
+    const video = Object.keys(mimeTypes.video);
+    const image = Object.keys(mimeTypes.image);
+    const sidecar = Object.keys(mimeTypes.sidecar);
     return {
-      video: Object.keys(mimeTypes.video),
-      image: Object.keys(mimeTypes.image),
-      sidecar: Object.keys(mimeTypes.sidecar),
+      video,
+      image,
+      sidecar,
+      count: video.length + image.length + sidecar.length,
     };
   }
 
