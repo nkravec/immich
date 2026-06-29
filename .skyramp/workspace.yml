@@ -1,0 +1,52 @@
+# Skyramp Workspace Configuration
+workspace:
+  repoName: nkravec/immich
+  repoUrl: https://github.com/nkravec/immich
+metadata:
+  schemaVersion: v1
+  executorVersion: v1.3.30
+  createdAt: "2026-06-29T18:59:12.637Z"
+  updatedAt: "2026-06-29T18:59:12.644Z"
+services:
+  - serviceName: immich-server
+    language: typescript
+    framework: playwright
+    testDirectory: e2e/src/specs/server
+    api:
+      schemaPath: open-api/immich-openapi-specs.json
+      authType: bearer
+      authHeader: Authorization
+      baseUrl: http://localhost:2283/api
+    runtimeDetails:
+      serverStartCommand: docker compose -f .skyramp/sut/docker-compose.testbot.yml --project-directory . up -d --build immich-server
+      serverStopCommand: docker compose -f .skyramp/sut/docker-compose.testbot.yml --project-directory . stop immich-server
+      runtime: docker
+      dockerNetwork: immich-testbot_default
+  - serviceName: immich-web
+    language: typescript
+    framework: playwright
+    testDirectory: e2e/src/specs/web
+    api:
+      authType: none
+      authHeader: ""
+      baseUrl: http://localhost:2283
+    runtimeDetails:
+      serverStartCommand: docker compose -f .skyramp/sut/docker-compose.testbot.yml --project-directory . up -d --build immich-server
+      serverStopCommand: docker compose -f .skyramp/sut/docker-compose.testbot.yml --project-directory . stop immich-server
+      runtime: docker
+      dockerNetwork: immich-testbot_default
+  - serviceName: immich-machine-learning
+    language: python
+    framework: pytest
+    testDirectory: tests/skyramp/machine-learning
+    api:
+      authType: none
+      authHeader: ""
+      baseUrl: http://localhost:3003
+    runtimeDetails:
+      serverStartCommand: >-
+        docker compose -f .skyramp/sut/docker-compose.testbot.yml --project-directory . up -d --build
+        immich-machine-learning
+      serverStopCommand: docker compose -f .skyramp/sut/docker-compose.testbot.yml --project-directory . stop immich-machine-learning
+      runtime: docker
+      dockerNetwork: immich-testbot_default
