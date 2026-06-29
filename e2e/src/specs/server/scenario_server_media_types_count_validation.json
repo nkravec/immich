@@ -1,0 +1,54 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"res\": \"pong\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/server/ping",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 2283,
+    "Timestamp": "2026-06-29T19:37:47.498Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"video\": [\"video/mp4\", \"video/mov\"], \"image\": [\"image/jpeg\", \"image/png\"], \"sidecar\": [\".xmp\"], \"count\": 4}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/server/media-types",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 2283,
+    "Timestamp": "2026-06-29T19:37:47.498Z",
+    "Scheme": "http"
+  }
+]
